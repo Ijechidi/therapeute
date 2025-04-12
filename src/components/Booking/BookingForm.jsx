@@ -10,11 +10,43 @@ const BookingForm = () => {
     therapist: '',
     message: ''
   });
+  const [status, setStatus] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Ajoutez ici la logique de soumission
-    console.log(formData);
+    setStatus('sending');
+    try {
+      const response = await fetch("https://formspree.io/f/xldjzbow", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `Nouvelle réservation de ${formData.name}`,
+        }),
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          date: '',
+          time: '',
+          therapist: '',
+          message: ''
+        });
+        setTimeout(() => setStatus(''), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus(''), 3000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus(''), 3000);
+    }
   };
 
   const handleChange = (e) => {
@@ -121,9 +153,25 @@ const BookingForm = () => {
         ></textarea>
       </div>
 
-      <button type="submit" className="booking-btn">
-        Prendre Rendez-vous
+      <button 
+        type="submit" 
+        className={`booking-btn ${status === 'sending' ? 'sending' : ''}`}
+        disabled={status === 'sending'}
+      >
+        {status === 'sending' ? 'Envoi en cours...' : 'Prendre Rendez-vous'}
       </button>
+
+      {status === 'success' && (
+        <div className="form-message success">
+          Votre demande a été envoyée avec succès !
+        </div>
+      )}
+      
+      {status === 'error' && (
+        <div className="form-message error">
+          Une erreur s'est produite. Veuillez réessayer.
+        </div>
+      )}
     </form>
   );
 };

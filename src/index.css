@@ -559,6 +559,36 @@ html {
   transition: all 0.3s ease;
 }
 
+.booking-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-btn.sending {
+  background-color: var(--primary-blue);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.form-message.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.form-message.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid #f44336;
+}
+
 .booking-btn:hover {
   background: var(--primary-green);
   transform: translateY(-2px);
