@@ -53,6 +53,29 @@ code {
   box-shadow: 0 2px 4px var(--shadow-color);
 }
 
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1000;
+  margin-left: auto; /* Ajout pour pousser vers la droite */
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1.5rem;
+    grid-template-columns: 1fr auto; /* Modification pour mobile */
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -481,16 +504,75 @@ html {
 
 /* Booking Form */
 .booking-form {
-  max-width: 500px;
+  max-width: 600px;
+  width: 90%;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2.5rem;
   background: var(--background-color);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px var(--shadow-color);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--shadow-color);
+  border-radius: 8px;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  outline: none;
+}
+
+.booking-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.booking-btn:hover {
+  background: var(--primary-green);
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .booking-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
 }
 
 .form-group input,
