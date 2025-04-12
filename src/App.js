@@ -5,11 +5,12 @@ import Home from './pages/Home';
 import IndividualTherapy from './pages/services/IndividualTherapy';
 import CoupleTherapy from './pages/services/CoupleTherapy';
 import MeditationTherapy from './pages/services/MeditationTherapy';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -17,6 +18,7 @@ function App() {
           <Route path="/services/couple" element={<CoupleTherapy />} />
           <Route path="/services/meditation" element={<MeditationTherapy />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
