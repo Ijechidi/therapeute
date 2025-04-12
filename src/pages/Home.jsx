@@ -4,6 +4,27 @@ import BookingForm from '../components/Booking/BookingForm';
 import { FaUserFriends, FaUserAlt, FaHeartbeat } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+const testimonials = [
+  {
+    id: 1,
+    text: "Une expérience transformative qui a changé ma vie. L'approche professionnelle et bienveillante m'a permis de surmonter mes difficultés.",
+    author: "Marie D.",
+    role: "Cliente depuis 2022"
+  },
+  {
+    id: 2,
+    text: "Des thérapeutes professionnels et à l'écoute. Je recommande vivement leurs services pour quiconque cherche un accompagnement de qualité.",
+    author: "Pierre L.",
+    role: "Client depuis 2023"
+  },
+  {
+    id: 3,
+    text: "Grâce à leur accompagnement, j'ai retrouvé confiance en moi. Une équipe exceptionnelle et des résultats remarquables.",
+    author: "Sophie M.",
+    role: "Cliente depuis 2021"
+  }
+];
+
 const Home = () => {
   const therapists = [
     {
@@ -100,14 +121,16 @@ const Home = () => {
       <section id="testimonials" className="section">
         <h2>Témoignages</h2>
         <div className="testimonials-grid">
-          <div className="testimonial-card">
-            <p>"Une expérience transformative qui a changé ma vie."</p>
-            <span>- Marie D.</span>
-          </div>
-          <div className="testimonial-card">
-            <p>"Des thérapeutes professionnels et à l'écoute."</p>
-            <span>- Pierre L.</span>
-          </div>
+          {testimonials.map(testimonial => (
+            <div key={testimonial.id} className="testimonial-card">
+              <div className="quote-icon">❝</div>
+              <p>{testimonial.text}</p>
+              <div className="testimonial-author">
+                <span className="author-name">{testimonial.author}</span>
+                <span className="author-role">{testimonial.role}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>

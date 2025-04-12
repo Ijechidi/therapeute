@@ -56,6 +56,12 @@ const BookingForm = () => {
     });
   };
 
+  // Calculer les limites de dates
+  const today = new Date().toISOString().split('T')[0];
+  const maxDate = new Date();
+  maxDate.setMonth(maxDate.getMonth() + 3);
+  const maxDateStr = maxDate.toISOString().split('T')[0];
+
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
       <div className="form-group">
@@ -102,6 +108,8 @@ const BookingForm = () => {
           name="date"
           value={formData.date}
           onChange={handleChange}
+          min={today}
+          max={maxDateStr}
           required
         />
       </div>
