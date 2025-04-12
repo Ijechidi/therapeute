@@ -1,3 +1,25 @@
+:root {
+  /* Light theme variables */
+  --primary-blue: #2196f3;
+  --primary-green: #4caf50;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --secondary-bg: #f8f9fa;
+  --navbar-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  /* Dark theme variables */
+  --primary-blue: #64b5f6;
+  --primary-green: #81c784;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --secondary-bg: #1e1e1e;
+  --navbar-bg: #1a1a1a;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +27,813 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Update navbar styles */
+.navbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--navbar-bg);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--primary-blue);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  color: var(--primary-green);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-blue);
+  background-color: var(--shadow-color);
+}
+
+/* Update theme toggle position */
+.theme-toggle-icon {
+  margin-left: 1rem;
+}
+
+.nav-links a:hover {
+  color: var(--primary-blue);
+}
+
+/* Update hero section */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue) 0%,
+    rgba(33, 150, 243, 0.8) 50%,
+    var(--primary-green) 100%
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add new button styles */
+.theme-toggle {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primary-button {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.theme-toggle-icon {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-icon:hover {
+  background-color: var(--shadow-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section styles */
+.section {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+}
+
+.section:nth-child(even) {
+  background-color: var(--secondary-bg);
+}
+
+/* Therapist Cards */
+.therapists-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.therapist-card {
+  background: var(--background-color);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Supprimer les doublons et les classes d'animation qui ne sont plus utilisées */
+.therapists-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.therapist-image-wrapper {
+  width: 100%;
+  padding-top: 125%; /* 5:4 aspect ratio */
+  position: relative;
+}
+
+.therapist-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.therapist-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%; /* Position focus point near the top for faces */
+  transition: transform 0.3s ease;
+}
+
+/* Adjust for mobile */
+@media screen and (max-width: 768px) {
+  .therapist-image-wrapper {
+    padding-top: 100%; /* 1:1 aspect ratio for mobile */
+  }
+}
+
+/* Adjust mobile view height */
+@media screen and (max-width: 768px) {
+  .therapist-image-container {
+    height: 300px;
+  }
+}
+
+.therapist-card:hover {
+  transform: translateY(-5px);
+}
+
+.therapist-card:hover .therapist-image {
+  transform: scale(1.05);
+}
+
+.therapist-info {
+  padding: 1rem;
+  flex: 1;
+}
+
+.therapist-info h3 {
+  color: var(--primary-blue);
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.specialty {
+  color: var(--primary-green);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.description {
+  color: var(--text-color);
+  line-height: 1.4;
+  font-size: 0.85rem;
+}
+
+.therapists-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .therapist-info {
+    padding: 0.8rem;
+  }
+  
+  .therapist-info h3 {
+    font-size: 1.1rem;
+  }
+}
+
+.therapist-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.therapist-image {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.therapist-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.therapist-card:hover .therapist-image img {
+  transform: scale(1.1);
+}
+
+.therapist-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.therapist-card:hover .therapist-overlay {
+  opacity: 1;
+}
+
+.contact-btn {
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: var(--primary-green);
+  transform: scale(1.05);
+}
+
+.therapist-info {
+  padding: 1.5rem;
+}
+
+.therapist-info h3 {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.specialty {
+  color: var(--primary-green);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.therapist-details {
+  border-top: 1px solid var(--shadow-color);
+  padding-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.detail-icon {
+  color: var(--primary-blue);
+}
+
+.star {
+  color: #FFD700;
+}
+
+.rating {
+  font-weight: bold;
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.therapist-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.therapist-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.therapist-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.therapist-card:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+/* Booking Form */
+.booking-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--shadow-color);
+  border-radius: 4px;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+.booking-btn {
+  margin-top: 1rem;
+}
+
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1000;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Add smooth transition for menu items */
+.nav-links li {
+  transition: transform 0.3s ease;
+}
+
+.nav-links.active li {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Ensure content doesn't overflow on mobile */
+.home {
+  overflow-x: hidden;
+}
+
+/* Base navbar styles */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive navbar */
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--navbar-bg);
+    transition: 0.3s ease-in-out;
+    padding: 2rem;
+    box-shadow: -2px 0 5px var(--shadow-color);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav-links {
+    width: 100%;
+  }
+
+  .logo span {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive sections */
+@media screen and (max-width: 1024px) {
+  .section {
+    padding: 4rem 1.5rem;
+  }
+
+  .services-grid,
+  .therapists-section,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem;
+    margin-top: 60px;
+  }
+
+  .services-grid,
+  .therapists-section,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 2rem 0.8rem;
+  }
+
+  .booking-form {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.6rem;
+  }
+
+  .therapist-card {
+    margin: 0 0.8rem;
+  }
+}
+
+/* Overlay for mobile menu */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Services Section Styling */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.service-card {
+  background: var(--background-color);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary-blue);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+
+.service-card h3 {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.service-card p {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.service-btn {
+  background: transparent;
+  border: 2px solid var(--primary-blue);
+  color: var(--primary-blue);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.service-btn:hover {
+  background: var(--primary-blue);
+  color: white;
+}
+
+/* Add animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.service-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.service-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .services-grid {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-icon {
+    font-size: 2rem;
+  }
+}
+
+:root {
+  --primary-blue: #4A90E2;
+  --primary-green: #2ECC71;
+  --background-color: #ffffff;
+  --secondary-bg: #f5f7fa;
+  --text-color: #333333;
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --primary-blue: #60A5FA;
+  --primary-green: #34D399;
+  --background-color: #1F2937;
+  --secondary-bg: #111827;
+  --text-color: #E5E7EB;
+  --navbar-bg: rgba(17, 24, 39, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Add these new styles for better dark mode card contrast */
+[data-theme='dark'] .service-card,
+[data-theme='dark'] .therapist-card,
+[data-theme='dark'] .testimonial-card {
+  background: #2D3748;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .service-card:hover,
+[data-theme='dark'] .therapist-card:hover,
+[data-theme='dark'] .testimonial-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .service-btn {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+[data-theme='dark'] .service-btn:hover {
+  background: var(--primary-blue);
+  color: var(--background-color);
+}
+
+[data-theme='dark'] .hero {
+  background: linear-gradient(
+    45deg,
+    #2D3748,
+    #1F2937
+  );
 }
